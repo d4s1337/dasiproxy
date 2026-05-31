@@ -1,0 +1,28 @@
+{
+    "hotDomainDetect": true,
+    "enableAccessLogs": true,
+    "rateLimit": {
+        "limit": 120,
+        "window": 60000
+    },
+    "enablePriorityByTraffic": true,
+    "priorityEvaluateIntervalDays": 30,
+    "priorityTopCount": 10,
+    "highTrafficThresholdRequestsPerWindow": 1000,
+    "enableDpSessionApi": false,
+    "dashboardPassword": "",
+    "dpSessionApiDomain": "",
+    "dpSessionApiKey": "",
+    "blockAIBots": false,
+    "preferDefaultStaticPages": true,
+    "maintenanceMode": false,
+    "ipWhitelist": [
+       
+    ],
+    "discordWebhook": "",
+    "serverPublicIp": "",
+    "enableCloudflare": false,
+    "version": "v2.1  // May 2026",
+    "cfApiToken": "",
+    "cfZoneId": ""
+}
