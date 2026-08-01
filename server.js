@@ -969,29 +969,29 @@ function buildDdosEmbed(title, color, description) {
         color,
         description,
         fields: [
-            { name: '🕒 Başlangıç', value: `\`${new Date(ddosState.startedAt).toLocaleString('tr-TR')}\``, inline: true },
-            { name: '⏳ Süre', value: `\`${formatDuration(durationSec)}\``, inline: true },
-            { name: '🚨 Durum', value: ddosState.active ? '`devam ediyor`' : '`sona erdi`', inline: true },
+            { name: 'Başlangıç', value: `\`${new Date(ddosState.startedAt).toLocaleString('tr-TR')}\``, inline: true },
+            { name: 'Süre', value: `\`${formatDuration(durationSec)}\``, inline: true },
+            { name: 'Durum', value: ddosState.active ? '`devam ediyor`' : '`sona erdi`', inline: true },
 
-            { name: '💥 Engellenen İstek', value: `\`${totals.blocked.toLocaleString('tr-TR')}\``, inline: true },
-            { name: '📈 Zirve', value: `\`~${peakRps.toLocaleString('tr-TR')} istek/sn\``, inline: true },
-            { name: '📊 Ortalama', value: `\`~${avgRps.toLocaleString('tr-TR')} istek/sn\``, inline: true },
+            { name: 'Engellenen İstek', value: `\`${totals.blocked.toLocaleString('tr-TR')}\``, inline: true },
+            { name: 'Zirve', value: `\`~${peakRps.toLocaleString('tr-TR')} istek/sn\``, inline: true },
+            { name: 'Ortalama', value: `\`~${avgRps.toLocaleString('tr-TR')} istek/sn\``, inline: true },
 
-            { name: '👥 Saldırgan IP', value: `\`${totals.ips.size.toLocaleString('tr-TR')} farklı adres\``, inline: true },
-            { name: '🔨 Otomatik Ban', value: `\`${totals.autoBans.toLocaleString('tr-TR')}\``, inline: true },
-            { name: '🚫 Toplam Blacklist', value: `\`${blacklist.size.toLocaleString('tr-TR')}\``, inline: true },
+            { name: 'Saldırgan IP', value: `\`${totals.ips.size.toLocaleString('tr-TR')} farklı adres\``, inline: true },
+            { name: 'Otomatik Ban', value: `\`${totals.autoBans.toLocaleString('tr-TR')}\``, inline: true },
+            { name: 'Toplam Blacklist', value: `\`${blacklist.size.toLocaleString('tr-TR')}\``, inline: true },
 
-            { name: '🔝 En Çok İstek Atan IP\'ler', value: formatTop(totals.ips, 8), inline: false },
-            { name: '🌍 Ülkeler (cf-ipcountry)', value: formatTop(countries, 6, '`cloudflare ülke bilgisi yok`'), inline: true },
-            { name: '🛰️ Cloudflare Lokasyonu', value: formatTop(colos, 6, '`bilinmiyor`'), inline: true },
+            { name: 'En Çok İstek Atan IP\'ler', value: formatTop(totals.ips, 8), inline: false },
+            { name: 'Ülkeler (cf-ipcountry)', value: formatTop(countries, 6, '`cloudflare ülke bilgisi yok`'), inline: true },
+            { name: 'Cloudflare Lokasyonu', value: formatTop(colos, 6, '`bilinmiyor`'), inline: true },
 
-            { name: '🎯 Hedeflenen Domainler', value: formatTop(totals.hosts, 5), inline: false },
-            { name: '🛣️ Hedeflenen Yollar', value: formatTop(totals.paths, 5), inline: false },
-            { name: '🖥️ User-Agent Dağılımı', value: formatTop(totals.uas, 4), inline: false },
+            { name: 'Hedeflenen Domainler', value: formatTop(totals.hosts, 5), inline: false },
+            { name: 'Hedeflenen Yollar', value: formatTop(totals.paths, 5), inline: false },
+            { name: 'User-Agent Dağılımı', value: formatTop(totals.uas, 4), inline: false },
 
-            { name: '🌐 Sunucu Toplam İstek', value: `\`${(global.totalRequests || 0).toLocaleString('tr-TR')}\``, inline: true },
-            { name: '⚡ Ort. Yanıt', value: `\`${global.completedRequests ? Math.floor(global.totalResponseTime / global.completedRequests) : 0} ms\``, inline: true },
-            { name: '🧠 Bellek (RSS)', value: `\`${formatBytes(process.memoryUsage().rss)}\``, inline: true }
+            { name: 'Sunucu Toplam İstek', value: `\`${(global.totalRequests || 0).toLocaleString('tr-TR')}\``, inline: true },
+            { name: 'Ort. Yanıt', value: `\`${global.completedRequests ? Math.floor(global.totalResponseTime / global.completedRequests) : 0} ms\``, inline: true },
+            { name: 'Bellek (RSS)', value: `\`${formatBytes(process.memoryUsage().rss)}\``, inline: true }
         ],
         timestamp: new Date().toISOString(),
         footer: { text: `dasiiproxy ${config.version || 'v2'} - ddos izleme` }
@@ -1004,19 +1004,19 @@ function notifyDdos(kind) {
 
     if (kind === 'start') {
         sendDiscordEmbed(
-            buildDdosEmbed('🛑 DDoS saldırısı algılandı', 0xff3b30, 'Rate limit eşiği aşıldı. Saldırı trafiği engelleniyor.'),
+            buildDdosEmbed('DDoS saldırısı algılandı', 0xff3b30, 'Rate limit eşiği aşıldı. Saldırı trafiği engelleniyor.'),
             '@here',
             webhook
         );
     } else if (kind === 'update') {
         sendDiscordEmbed(
-            buildDdosEmbed('⚠️ DDoS saldırısı sürüyor', 0xfbbf24, 'Saldırı devam ediyor. Güncel durum aşağıda.'),
+            buildDdosEmbed('DDoS saldırısı sürüyor', 0xfbbf24, 'Saldırı devam ediyor. Güncel durum aşağıda.'),
             null,
             webhook
         );
     } else if (kind === 'end') {
         sendDiscordEmbed(
-            buildDdosEmbed('✅ DDoS saldırısı sona erdi', 0x34d399, 'Trafik normale döndü. Saldırının özeti aşağıda.'),
+            buildDdosEmbed('DDoS saldırısı sona erdi', 0x34d399, 'Trafik normale döndü. Saldırının özeti aşağıda.'),
             null,
             webhook
         );
